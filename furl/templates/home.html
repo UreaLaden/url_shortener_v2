@@ -7,6 +7,15 @@
     <title>FURL HOME</title>
 </head>
 <body>
-    <h1>FURL - URL Shortener</h1>
+    <div>
+        <h1>FURL - URL Shortener</h1>
+    </div>
+    <div>
+        <form method="POST" action="go">
+            {% csrf_token %}
+            <input type="text" name="original_url">
+            <input type="submit">
+        </form>
+    </div>
 </body>
 </html>
