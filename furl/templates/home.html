@@ -4,18 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FURL HOME</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>HOME</title>
 </head>
 <body>
-    <div>
-        <h1>FURL - URL Shortener</h1>
+    <div class="container d-flex flex-column vh-100">        
+        <div class="d-flex h-25"></div>
+        <div class="d-flex flex-column border-info justify-content-center align-items-center border border-dark ">
+            <div class="d-flex justify-content-center align-items-center"><h1>Paste the URL to be Shortened</h1></div>
+            <div class="d-flex justify-content-center align-items-center w-50">
+                <div class="d-flex justify-content-center align-items-center w-100 ">
+                    <form class="input-group m-5"  method="POST" action="go">
+                        {% csrf_token %}
+                        <input class="form-control" placeholder="https://example.com/users" type="text" name="original_url">
+                        <span id="shorten-btn-parent">
+                            <button id="shorten-btn" type="submit" class="btn btn-primary">Shorten URL</button>
+                        </span>
+                        <span id="spinner" class = "not-visible">
+                            <button  type="button" class="btn btn-primary" disabled>
+                                <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                                Shortening...
+                            </button>
+                        </span>
+                    </form>
+                </div>
+            </div>            
+            {% block content %}
+        </div>
+        <div class="d-flex h-25"></div>
     </div>
-    <div>
-        <form method="POST" action="go">
-            {% csrf_token %}
-            <input type="text" name="original_url">
-            <input type="submit">
-        </form>
-    </div>
+    {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="static/app.js"></script>
 </body>
 </html>

@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FURL your short url</title>
-</head>
-<body>
-    <h2>Your Short URL has been created</h2>
-    <h3>Your long URL is <a href="{{ original_url }}">"{{ original_url }}"</a></h3>
-    <h3>Your short URL is <a href="{{ short_url }}">"{{ short_url }}"</a></h3>
-</body>
-</html>
+{% extends 'home.html' %}
+
+{% block content %}
+<span id="data-box">
+    <div class=" not-visible d-flex flex-column justify-content-center align-items-center m-5 ">
+        <h2 class="fs-4">URL has been created</h2>
+        <h3 class="fs-5">New URL: <a href="{{ short_url }}">{{ short_url }}</a></h3>
+    </div>
+</span>
+{% endblock content %}

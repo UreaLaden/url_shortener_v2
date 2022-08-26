@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse,redirect
 from django.http import Http404,HttpResponseNotFound
 from .models import urlModel
 import string,random
+from django.views.decorators.csrf import csrf_exempt,csrf_protect
 
 # Create your views here.
 def home(request):
@@ -17,6 +18,7 @@ def make_short_url(request):
         print("Created Object {} from {}".format(short_url,original_url))
         context = {'original_url':original_url,'short_url':short_url}
     # return HttpResponse("Your short url for {} is {}.".format(original_url,short_url))
+        print('Returning: ',request)
         return render(request,'urlcreated.html',context)
 
 def redirect_url(request,short_url):
