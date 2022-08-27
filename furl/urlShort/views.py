@@ -15,18 +15,12 @@ def make_short_url(request):
         short_url = "".join(random.sample(key,6))
         obj = urlModel.objects.create(original_url=original_url,short_url=short_url)
         short_url = "http://localhost:8000/" + short_url
-        print("Created Object {} from {}".format(short_url,original_url))
         context = {'original_url':original_url,'short_url':short_url}
-    # return HttpResponse("Your short url for {} is {}.".format(original_url,short_url))
-        print('Returning: ',request)
         return render(request,'urlcreated.html',context)
 
 def redirect_url(request,short_url):
     try:
-        print(short_url)
         obj = urlModel.objects.get(short_url=short_url)
-        print("Object found")
-        print(obj.original_url)
         obj.count += 1
         obj.save()
         return redirect(obj.original_url)
