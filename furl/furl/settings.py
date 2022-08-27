@@ -126,4 +126,4 @@ STATICFILES_DIRS = [BASE_DIR / "static",]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-ALLOWED_HOSTS = ['django-env.eba-ipmyjidk.us-west-2.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['django-env.eba-ipmyjidk.us-west-2.elasticbeanstalk.com','127.0.0.1','localhost']
